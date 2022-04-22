@@ -2,15 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
 import App from "./App";
-import ContextProvider from "./context/socket.context";
+import SocketContextProvider from "./context/socket.context";
+import UserContextProvider from "./context/user.context";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ContextProvider>
-      <App />
-    </ContextProvider>
+    <UserContextProvider>
+      <SocketContextProvider>
+        <App />
+      </SocketContextProvider>
+    </UserContextProvider>
   </React.StrictMode>
 );

@@ -29,7 +29,10 @@ code {
     margin-left: auto;
   }
   button {
-    width: 3rem;
+    min-width: 3rem;
+    &:disabled {
+      display: none;
+    }
   }
 }
 
