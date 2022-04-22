@@ -1,6 +1,5 @@
 import React, { FormEvent, useEffect, useState } from "react";
-import { io } from "socket.io-client";
-import config from "./config";
+import { setEnvironmentData } from "worker_threads";
 import { useSockets } from "./context/socket.context";
 
 const App = () => {
@@ -18,7 +17,6 @@ const App = () => {
   });
 
   socket.on("message", (received) => {
-    console.log("beep");
     setResponse([...response, received]);
   });
 
@@ -41,6 +39,7 @@ const App = () => {
             onChange={(event) => setName(event.currentTarget.value)}
             value={name}
           />
+          <button tabIndex={-1}></button>
         </div>
         <div className="label-input">
           <label htmlFor="message">Enter a message </label>
@@ -51,15 +50,16 @@ const App = () => {
             onChange={(event) => setMessage(event.currentTarget.value)}
             value={message}
           />
+          <button type="submit" value="" className="fa fa-bullhorn"></button>
         </div>
-        <input type="submit" value="send" />
       </form>
       {response.map(
         (res, i) =>
           i > 0 && (
             <p
               key={`response ${i}`}
-              className={res.name === "Me" ? "me" : "them"}
+              id={res.name.toLowerCase()}
+              className="message"
             >
               {res.name}:{res.message}
             </p>
