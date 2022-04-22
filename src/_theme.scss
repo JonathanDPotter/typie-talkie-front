@@ -1,0 +1,19 @@
+@mixin form-theme {
+  .label-input {
+  width: 90vw;
+  max-width: 500px;
+  min-height: 1.5rem;
+  margin: 2px 0 2px 4rem;
+  display: flex;
+  input {
+    margin-left: auto;
+  }
+  button {
+    min-width: 3rem;
+    justify-self: flex-end;
+    &:disabled {
+      display: none;
+    }
+  }
+}
+}

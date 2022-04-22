@@ -21,21 +21,6 @@ code {
     monospace;
 }
 
-.label-input {
-  width: 90vw;
-  margin: 0 auto;
-  display: flex;
-  input {
-    margin-left: auto;
-  }
-  button {
-    min-width: 3rem;
-    &:disabled {
-      display: none;
-    }
-  }
-}
-
 label,
 button,
 input {
@@ -52,24 +37,4 @@ input {
   &:focus {
     outline: none;
   }
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  color: darkslategrey;
-  background-color: $orange;
-}
-
-.message {
-  color: rgb(105, 223, 105);
-}
-
-#me {
-  color: rgb(197, 102, 102);
-}
-
-#server {
-  color: rgb(133, 133, 240);
 }

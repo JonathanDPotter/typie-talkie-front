@@ -1,0 +1,19 @@
+@use "../../theme";
+
+@include theme.form-theme;
+
+.messages {
+  margin: 1rem;
+
+  .message {
+    color: rgb(105, 223, 105);
+  }
+
+  #me {
+    color: rgb(197, 102, 102);
+  }
+
+  #server {
+    color: rgb(133, 133, 240);
+  }
+}
