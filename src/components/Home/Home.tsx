@@ -1,4 +1,5 @@
 import React, { FormEvent, useEffect, useState } from "react";
+import api from "../../api";
 // utils
 import { useSockets } from "../../context/socket.context";
 import { useUser } from "../../context/user.context";
@@ -6,7 +7,7 @@ import { useUser } from "../../context/user.context";
 import "./Home.scss";
 
 const Home = () => {
-  const { user, token } = useUser();
+  const { user, token, setUser, setToken } = useUser();
   // local state
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState([
@@ -30,9 +31,25 @@ const Home = () => {
     setMessage("");
   };
 
+  const removeUser = () => {
+    setUser(null);
+    localStorage.setItem("user", "");
+    setToken(null);
+    localStorage.setItem("token", "");
+  };
+
   useEffect(() => {
     user && socket.emit("new", { name: user, message: "" });
   }, [user]);
+
+  useEffect(() => {
+    const validateUser = (async () => {
+      if (token) {
+        const valid = await api.validate(token);
+        if (!valid.data.success) removeUser();
+      }
+    })();
+  }, []);
 
   return (
     <div>

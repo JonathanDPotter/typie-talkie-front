@@ -10,9 +10,11 @@ const Header = () => {
   const { socket } = useSockets();
 
   const handleLogOut = () => {
-    socket.emit("disconnected", {name: user})
-    setToken(null);
+    socket.emit("disconnected", { name: user });
     setUser(null);
+    localStorage.setItem("user", "");
+    setToken(null);
+    localStorage.setItem("token", "");
   };
 
   return (

@@ -9,5 +9,10 @@ const register = async (credentials: InewUser) =>
 const login = async (credentials: InewUser) =>
   axios.post(`${baseURL}/api/user/login`, credentials);
 
-const api = { register, login };
+const validate = async (token: string) =>
+  axios.get(`${baseURL}/api/user/validate`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+const api = { register, login, validate };
 export default api;

@@ -38,7 +38,6 @@ const Login = () => {
       res.data.success
         ? setUserAndToken(String(res.data.token))
         : window.alert(res.data.message);
-      console.log(res.data);
     } catch (error: any) {
       window.alert(error.message);
     }
