@@ -1,19 +1,24 @@
+$orange: rgb(241, 175, 75);
+$blue: rgb(170, 170, 255);
+$green: rgb(123, 255, 123);
+$red: rgb(253, 132, 132);
+
 @mixin form-theme {
   .label-input {
-  width: 90vw;
-  max-width: 500px;
-  min-height: 1.5rem;
-  margin: 2px 0 2px 4rem;
-  display: flex;
-  input {
-    margin-left: auto;
-  }
-  button {
-    min-width: 3rem;
-    justify-self: flex-end;
-    &:disabled {
-      display: none;
+    width: 90vw;
+    max-width: 500px;
+    min-height: 1.5rem;
+    margin: 2px 0 2px 4rem;
+    display: flex;
+    input {
+      margin-left: auto;
+    }
+    button {
+      min-width: 3rem;
+      justify-self: flex-end;
+      &:disabled {
+        display: none;
+      }
     }
   }
-}
 }

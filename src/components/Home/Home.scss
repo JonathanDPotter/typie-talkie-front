@@ -2,18 +2,29 @@
 
 @include theme.form-theme;
 
+.current-users {
+  margin: 1rem 1rem 1rem auto;
+  width: 50vw;
+  border: 2px solid theme.$orange;
+  padding: 0.5rem;
+
+  p {
+    margin: 0.25rem 1rem;
+  }
+}
+
 .messages {
   margin: 1rem;
 
   .message {
-    color: rgb(105, 223, 105);
+    color: theme.$green;
   }
 
   #me {
-    color: rgb(197, 102, 102);
+    color: theme.$red;
   }
 
   #server {
-    color: rgb(133, 133, 240);
+    color: theme.$blue;
   }
 }
