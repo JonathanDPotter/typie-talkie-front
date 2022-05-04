@@ -1,6 +1,5 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
-import { useBeforeunload } from "react-beforeunload";
 // utils
 import api from "../../api";
 import { useSockets } from "../../context/socket.context";
@@ -51,27 +50,18 @@ const Home = () => {
     if (!socket.connected) window.setTimeout(() => socket.connect(), 500);
     socket.emit("new", { name: user });
 
+    // checks if user token is still valid every time the page loads
     (async () => {
       if (token) {
         const valid = await api.validate(token);
         if (!valid.data.success) removeUser();
       }
     })();
-    window.addEventListener("beforeunload", (event) => {
-      event?.preventDefault();
-      return "";
-    });
-
-    window.addEventListener("unload", () => socket.disconnect());
 
     return () => {
+      // removes user from state and disconnects socket when the component is unmounted
       setUsers(null);
       socket.disconnect();
-      window.removeEventListener("beforeunload", (event) => {
-        event?.preventDefault();
-        return "";
-      });
-      window.removeEventListener("unload", () => socket.disconnect());
     };
   }, []);
 
