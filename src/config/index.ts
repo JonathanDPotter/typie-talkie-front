@@ -1,4 +1,4 @@
-const SOCKET_URL = process.env.SOCKET_URL || "http://localhost:1337";
+const BASE_URL = "https://typie-talkie-back.herokuapp.com/";
 
-const config = { SOCKET_URL };
+const config = { BASE_URL };
 export default config;

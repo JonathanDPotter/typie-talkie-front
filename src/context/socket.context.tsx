@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 import io from "socket.io-client";
 import config from "../config";
 
-const socket = io(config.SOCKET_URL);
+const socket = io(config.BASE_URL);
 
 const SocketContext = createContext({ socket });
 
