@@ -82,7 +82,12 @@ const Home = () => {
             value={message}
             autoFocus
           />
-          <button type="submit" value="" className="fa fa-bullhorn"></button>
+          <button
+            type="submit"
+            value=""
+            disabled={!user}
+            className="fa fa-bullhorn"
+          ></button>
         </div>
       </form>
       <div className="messages">
