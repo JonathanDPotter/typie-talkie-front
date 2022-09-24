@@ -9,10 +9,10 @@ const App = () => {
   const { user } = useUser();
 
   return (
-    <>
+    <div className="full-page">
       <Header />
       {user ? <Home /> : <Login />}
-    </>
+    </div>
   );
 };
 

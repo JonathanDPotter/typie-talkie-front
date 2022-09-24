@@ -54,7 +54,7 @@ const Home = () => {
     (async () => {
       if (token) {
         const valid = await api.validate(token);
-        if (!valid.data.success) removeUser();
+        if (valid.data.message !== "Token validated.") removeUser();
       }
     })();
 
