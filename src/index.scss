@@ -36,5 +36,6 @@ input {
   color: darkslategrey;
   &:focus {
     outline: slategrey;
+    background-color: lighten(theme.$orange, 10);
   }
 }

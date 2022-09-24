@@ -1,3 +1,9 @@
 @use "../../theme";
 
 @include theme.form-theme;
+
+.easy-login {
+  button {
+    margin: 1rem;
+  }
+}

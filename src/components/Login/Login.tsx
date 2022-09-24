@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FC, FormEvent, useRef, useState } from "react";
 import api from "../../api";
 import { useUser } from "../../context/user.context";
 // styles
@@ -7,6 +7,9 @@ import "./Login.scss";
 const Login = () => {
   // get setUser and setToken from context
   const { setUser, setToken } = useUser();
+
+  // ref for submit button to press it programatically
+  const submitButtonRef = useRef<HTMLButtonElement>(null);
 
   // form state and destructuring for ease of use
   const initialFormState = { username: "", password: "", repeatPassword: "" };
@@ -44,9 +47,33 @@ const Login = () => {
     setFormState(initialFormState);
   };
 
+  const EasyLogin: FC = () => {
+    const names = ["Greebo", "Hero", "Tina"];
+    return (
+      <div className="easy-login">
+        {names.map((name) => (
+          <button
+            key={name}
+            onClick={async () => {
+              await setFormState({
+                username: name,
+                password: "password",
+                repeatPassword: "",
+              });
+              submitButtonRef.current?.click();
+            }}
+          >
+            Login as {name}
+          </button>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="page">
       <h2>{login ? "Log In" : "Register"}</h2>
+      {login ? <EasyLogin /> : null}
       <form action="submit" onSubmit={handleSubmit}>
         <div className="label-input">
           <label htmlFor="username">username</label>
@@ -88,6 +115,7 @@ const Login = () => {
         <div className="label-input">
           <button
             type="submit"
+            ref={submitButtonRef}
             disabled={
               login
                 ? !(username && password)
