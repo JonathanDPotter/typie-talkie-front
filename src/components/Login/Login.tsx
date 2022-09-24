@@ -36,7 +36,7 @@ const Login = () => {
         ? await api.login({ username, password })
         : await api.register({ username, password });
       res.data.token
-        ? setUserAndToken(String(res.data.token))
+        ? setUserAndToken(res.data.token)
         : window.alert(res.data.message);
     } catch (error: any) {
       window.alert(error.message);
